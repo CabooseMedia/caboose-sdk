@@ -1,15 +1,15 @@
 {
-  "name": "@caboose/sdk",
-  "version": "0.0.1-test",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "name": "@caboosemedia/sdk",
+  "version": "0.0.1-beta2",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": "https://github.com/CabooseMedia/caboose-sdk.git",
   "author": "Isaac Robbins <isaacprobbins@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node ./dist/main.js",
-    "dev": "ts-node-esm ./src/main.ts",
-    "build": "tsc -p .",
+    "start": "node lib/index.js",
+    "dev": "ts-node-esm src/index.ts",
+    "build": "node_modules/.bin/rimraf lib && tsc -p .",
     "test": "jest --passWithNoTests"
   },
   "devDependencies": {
@@ -19,6 +19,7 @@
     "@types/node": "^20.7.0",
     "babel-jest": "^29.7.0",
     "jest": "^29.7.0",
+    "rimraf": "^5.0.4",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }
