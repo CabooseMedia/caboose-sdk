@@ -1,18 +1,32 @@
 import { EventEmitter } from 'events';
 
+import { ServerManager } from './managers/managers';
+
 export class CabooseSDK extends EventEmitter {
 
-    private id: string;
+    protected serverManager: ServerManager;
 
-    constructor(config: {
-        id: string;
-    }) {
+    constructor(serverManager: ServerManager) {
         super();
-        this.id = config.id;
+        this.serverManager = serverManager;
+        
+        this.initialize();
+
+        this.emit('initialized');
     }
 
-    public getId(): string {
-        return this.id;
+    public async start(): Promise<void> {
+        await this.onStart();
+
+        this.emit('ready');
+    }
+
+    public initialize(): void {
+        // Override this method
+    }
+
+    public async onStart(): Promise<void> {
+        // Override this method
     }
 
 }
